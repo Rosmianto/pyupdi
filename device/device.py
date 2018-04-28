@@ -21,9 +21,18 @@ class Device(object): # pylint: disable=too-few-public-methods
             self.sigrow_address = 0x1100
             self.fuses_address = 0x1280
             self.userrow_address = 0x1300
+        elif device_name == "mega4809":
+            self.flash_start = 0x4000
+            self.flash_size = 48 * 1024
+            self.flash_pagesize = 128
+            self.syscfg_address = 0x0F00
+            self.nvmctrl_address = 0x1000
+            self.sigrow_address = 0x1100
+            self.fuses_address = 0x1280
+            self.userrow_address = 0x1300
         else:
             raise Exception("Unknown device")
 
     @staticmethod
     def get_supported_devices():
-        return ["tiny817", "tiny816", "tiny814", "tiny417"]
+        return ["tiny817", "tiny816", "tiny814", "tiny417", "mega4809"]
